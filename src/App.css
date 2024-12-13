@@ -1,0 +1,325 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Exo 2', sans-serif;
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column; /* Располагаем элементы по вертикали */
+  min-height: 100vh; /* Устанавливаем минимальную высоту для приложения */
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0; /* Позволяем этому блоку занимать всю оставшуюся высоту */
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto; /* Фиксированная высота футера */
+  background-color: #05A88D;
+  padding: 1vh;
+  position:fixed;
+  bottom:0;
+  width: 99%;
+}
+
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.logo {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  text-transform: capitalize;
+  color: #F1E67D;
+  text-decoration: none;
+}
+
+.text {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFFFFF;
+}
+
+.footer__right {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 22px; 
+}
+
+.contact {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  padding-top: 1px;
+}
+
+.phone { 
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #F1E67D;
+  display: block;
+  text-decoration: none;
+}
+
+.address {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #FFFFFF;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+.footer__bottom {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  color: #FFFFFF;
+  padding-top: 0px;
+}
+
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+.menu {
+  background-color: #FFFFFF;
+  margin: 20px 10px;
+  height: 100px;
+  display: flex;
+  box-shadow: 00px 4px 7px 0px #81818140;
+}
+
+.menu__ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.menu__link {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 300;
+  color: black;
+  margin: 20px;
+}
+
+.menu__logo {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 3vh;
+  color: #05A88D;
+  margin: auto;
+  margin-left: 79vh;
+}
+
+.auth_name {
+  text-decoration: none;
+  font-weight: 300;
+  width: 23vh;
+  height: 5vh;
+  font-size: 2vh;
+  color: #05A88D;
+  margin: auto;
+  margin-right: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
+}
+
+.menu__signup {
+  text-decoration: none;
+  font-weight: 300;
+  width: 105px;
+  height: 45px;
+  font-size: 16px;
+  color: #05A88D;
+  margin: auto;
+  margin-right: 70px;
+  border: 1px solid #05A88D;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
+}
+
+.menu__login {
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 16px;
+  color: #05A88D;
+  margin: auto;
+  margin-right: 70.5px;
+}
+
+.menu__link:hover {
+  color: #05A88D;
+}
+
+.user {
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-form, .SignUp-form, .order-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #05A88D;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+.login-form div, .SignUp-form div, .order-form div {
+  margin-bottom: 10px;
+}
+
+.login-form label, .SignUp-form label, .order-form label {
+  margin-bottom: 5px;
+}
+
+.login-form input, .SignUp-form input, .order-form input, .order-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form button, .SignUp-form button, .order-form button, .order-button, .show-button, .lfb {
+  background-color: #05A88D;
+  color: white;
+  border: none;
+  padding: 1vh;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin:1vh;
+}
+
+.login-form button:hover, .SignUp-form button:hover, .order-form button:hover, .order-button:hover, .show-button:hover {
+  background-color: #04896c;
+}
+
+.login-form button:active, .SignUp-form button:active, .order-form button:active, .order-button:active, .show-button:active {
+  background-color: #03785f;
+}
+
+.login-form button:focus, .SignUp-form button:focus, .order-form button:focus, .order-button:focus, .show-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(5, 168, 141, 0.5);
+}
+
+.Products {
+  position: absolute;
+  margin-top: -1vh;
+  margin-left: 3vh;
+}
+
+.Abouts {
+  position: absolute;
+  margin-top: -1vh;
+  margin-left: 10vh;
+}
+
+.order-make {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 2vh;
+  z-index: 100; /* значение должно быть больше, чем у других элементов */
+}
+
+.order-show {
+  display: flex;
+  justify-content: center;
+  margin-right: 1vh;
+  z-index: 50;
+}
+
+.order-button {
+  display: block; /* Обеспечиваем, чтобы кнопка занимала всю ширину, если нужно */
+  margin: 0; /* Сбрасываем отступы */
+}
+
+.order-form {
+  margin-top: 2vh; /* Отступ сверху для формы */
+}
+
+.order-container {
+  display: flex;
+  justify-content: center;
+  position: relative; /* Для позиционирования дочерних элементов */
+}
+
+.order-bar {
+  display: flex;
+  justify-content: center; 
+  width: 100%; /* Занимает всю ширину контейнера */
+  align-items: center; /* Центрирование по вертикали */
+}
+
+.order-form-wrapper {
+  position: absolute; /* Помещает форму поверх остальных элементов */
+  top: 1vh; /* Отодвигаем от верхней части контейнера */
+  left: 80.5vh; /* Местоположение формы */
+  z-index: 100; /* Чтобы форма была выше других элементов */
+}
+
+.order-form {
+  width: 300px; /* Фиксированная ширина формы */
+  background-color: white; /* Фоновый цвет для формирования */
+  border: 1px solid #05A88D; /* Опционально: для границ */
+}
+
+.show-button {
+  margin-left: 22.5vh;
+  z-index: 101; /* Убедитесь, что кнопка останется поверх формы */
+}
+
+.logo-container {
+  position: absolute; /* Позволяет свободно позиционировать контейнер */
+  top: 50%; /* Сначала смещаем вниз на 50% от высоты экрана */
+  left: 50%; /* Сначала смещаем вправо на 50% от ширины экрана */
+  transform: translate(-50%, -50%); /* Центрируем логотип, смещая на половину его ширины и высоты */
+  z-index: -50; /* Устанавливаем нижний уровень, чтобы другие элементы могли перекрывать его */
+}
+
+.logo {
+  max-width: 100%; /* Максимальная ширина 100% от родителя */
+  width: 200px; /* Установите желаемую ширину */
+  height: auto; /* Автоматически сохраняет пропорции изображения */
+}
