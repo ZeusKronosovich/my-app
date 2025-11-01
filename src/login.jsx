@@ -32,7 +32,7 @@ const LoginForm = ({ onTokenReceived, currentLogin }) => {
     if (response.ok) {
       const data = await response.json();
       setFormVisible(false);
-      onTokenReceived(data.token, data.login);
+      onTokenReceived(data.token, data.login, data.role);
     } else {
       const errorText = await response.text();
       setErrorMessage('Ошибка: ' + errorText);
@@ -41,14 +41,14 @@ const LoginForm = ({ onTokenReceived, currentLogin }) => {
 
   const handleLoginChange = (e) => {
     const value = e.target.value;
-    if (/^[a-zA-Z0-9]*$/.test(value)) {
+    if (value.length <= 20 && /^[a-zA-Z0-9]*$/.test(value)) {
       setLogin(value);
     }
   };
 
   const handlePasswordChange = (e) => {
     const value = e.target.value;
-    if (/^[a-zA-Z0-9]*$/.test(value)) {
+    if (value.length <= 20 && /^[a-zA-Z0-9]*$/.test(value)) {
       setPassword(value);
     }
   };
@@ -60,32 +60,62 @@ const LoginForm = ({ onTokenReceived, currentLogin }) => {
       ) : (
         <>
           {!isFormVisible ? (
-            <button onClick={handleLoginClick} className="lfb">Вход</button>
+            <button 
+              onClick={handleLoginClick} 
+              className="auth-button"
+              style={{ outline: 'none', boxShadow: 'none' }}
+            >
+              Вход
+            </button>
           ) : (
-            <div>
+            <div className="auth-form">
               <form onSubmit={handleSubmit}>
-                <label htmlFor="login">Логин:</label>
+                <label htmlFor="login">
+                  Логин:
+                </label>
                 <input
                   type="text"
                   id="login"
                   value={login}
                   onChange={handleLoginChange}
                   required
+                  maxLength={20}
+                  placeholder="Только латинские буквы и цифры"
                 />
                 <br />
-                <label htmlFor="password">Пароль:</label>
+                <label htmlFor="password">
+                  Пароль:
+                </label>
                 <input
                   type="password"
                   id="password"
                   value={password}
                   onChange={handlePasswordChange}
                   required
+                  maxLength={20}
+                  placeholder="Только латинские буквы и цифры"
                 />
                 <br />
-                <button type="submit" className="lfb">Войти</button>
-                <button type="button" className="lfb" onClick={handleCancelClick}>Отмена</button>
+                <button 
+                  type="submit" 
+                  className="auth-button"
+                  style={{ outline: 'none', boxShadow: 'none' }}
+                >
+                  Войти
+                </button>
+                <button 
+                  type="button" 
+                  className="auth-button cancel" 
+                  onClick={handleCancelClick}
+                  style={{ outline: 'none', boxShadow: 'none' }}
+                >
+                  Отмена
+                </button>
               </form>
               {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+              <p style={{ fontSize: '12px', color: '#666', marginTop: '10px' }}>
+                Логин и пароль: только латинские буквы и цифры, максимум 20 символов
+              </p>
             </div>
           )}
         </>

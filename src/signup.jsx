@@ -21,6 +21,16 @@ const SignUpForm = () => {
     e.preventDefault();
     setErrorMessage('');
 
+    if (login.length < 3) {
+      setErrorMessage('Логин должен содержать минимум 3 символа');
+      return;
+    }
+
+    if (password.length < 6) {
+      setErrorMessage('Пароль должен содержать минимум 6 символов');
+      return;
+    }
+
     const response = await fetch('http://localhost:8081/account', {
       method: 'POST',
       headers: {
@@ -47,47 +57,58 @@ const SignUpForm = () => {
 
   const handleLoginChange = (e) => {
     const value = e.target.value;
-    if (/^[a-zA-Z0-9]*$/.test(value)) {
+    if (value.length <= 20 && /^[a-zA-Z0-9]*$/.test(value)) {
       setLogin(value);
     }
   };
 
   const handlePasswordChange = (e) => {
     const value = e.target.value;
-    if (/^[a-zA-Z0-9]*$/.test(value)) {
+    if (value.length <= 20 && /^[a-zA-Z0-9]*$/.test(value)) {
       setPassword(value);
     }
   };
 
   return (
-    <div>
+    <div className="signup-form">
       {!isFormVisible ? (
-        <button onClick={handleSignUpClick} className="lfb">Sign Up</button>
+        <button onClick={handleSignUpClick} className="auth-button">Регистрация</button>
       ) : (
-        <div>
+        <div className="auth-form">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="login">Логин:</label>
+            <label htmlFor="login">
+              Логин:
+            </label>
             <input
               type="text"
               id="login"
               value={login}
               onChange={handleLoginChange}
               required
+              maxLength={20}
+              placeholder="Только латинские буквы и цифры"
             />
             <br />
-            <label htmlFor="password">Пароль:</label>
+            <label htmlFor="password">
+              Пароль:
+            </label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={handlePasswordChange}
               required
+              maxLength={20}
+              placeholder="Только латинские буквы и цифры"
             />
             <br />
-            <button type="submit" className="lfb">Зарегистрироваться</button>
-            <button type="button" onClick={handleCancelClick} className="lfb">Отмена</button>
+            <button type="submit" className="auth-button">Зарегистрироваться</button>
+            <button type="button" onClick={handleCancelClick} className="auth-button cancel">Отмена</button>
           </form>
           {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+          <p style={{ fontSize: '12px', color: '#666', marginTop: '10px' }}>
+            Логин и пароль: только латинские буквы и цифры, максимум 20 символов
+          </p>
         </div>
       )}
     </div>
